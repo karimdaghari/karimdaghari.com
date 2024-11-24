@@ -1,7 +1,13 @@
 ---
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
-import { SITE } from "@consts";
+import { RESUME_URL, SITE } from "@consts";
+
+const links = [
+	{ href: "/blog", text: "blog" },
+	{ href: "/projects", text: "projects" },
+	{ href: RESUME_URL, text: "resume", external: true },
+];
 ---
 
 <header transition:persist>
@@ -9,22 +15,22 @@ import { SITE } from "@consts";
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link href="/" underline={false}>
         <div class="font-semibold">
-          {SITE.TITLE}&nbsp;🔬
+          {SITE.TITLE}
         </div>
       </Link>
       <nav class="flex items-center gap-1 text-sm">
-        <Link href="/blog">blog</Link>
-        <span>
-          {`/`}
-        </span>
-        <Link href="/projects">projects</Link>
-        <span>
-          {`/`}
-        </span>
+        {links.map((link) => (
+          <>
+            <Link href={link.href}
+            external={link.external}
+            >{link.text}</Link>
+            <span>{`/`}</span>
+          </>
+        ))}
         <button
           id="magnifying-glass"
           aria-label="Search"
-          class="flex items-center rounded border border-black/15 bg-neutral-100 px-2 py-1 text-xs transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+          class="flex items-center rounded border border-black/15 bg-neutral-100 px-2 py-1 text-xs transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:bg-neutral-900 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white lg:w-32 w-40"
         >
           <svg
             height="16"

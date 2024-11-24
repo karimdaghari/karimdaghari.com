@@ -3,6 +3,9 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import { SITE } from "@consts";
+
+const memes = ["what-huh.gif", "rickroll-roll.gif"];
+const randomMeme = memes[Math.floor(Math.random() * memes.length)];
 ---
 
 <Layout title="404" description={SITE.DESCRIPTION}>
@@ -11,9 +14,11 @@ import { SITE } from "@consts";
       <h4 class="animate text-2xl font-semibold text-black dark:text-white">
         404: Page not found
       </h4>
+      <img src={`/${randomMeme}`} alt="404" class="animate h-80" />
       <span class="animate">
         <BackToPrevious href="/">Go to home page</BackToPrevious>
       </span>
     </div>
   </Container>
 </Layout>
+<Container>

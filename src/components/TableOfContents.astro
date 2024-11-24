@@ -6,24 +6,24 @@ const { headings } = Astro.props;
 const toc = buildToc(headings);
 
 export interface Heading {
-  depth: number;
-  slug: string;
-  text: string;
+	depth: number;
+	slug: string;
+	text: string;
 }
 
 function buildToc(headings: Heading[]) {
-  const toc: Heading[] = [];
-  const parentHeadings = new Map();
-  headings.forEach((h) => {
-    const heading = { ...h, subheadings: [] };
-    parentHeadings.set(heading.depth, heading);
-    if (heading.depth === 2) {
-      toc.push(heading);
-    } else {
-      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
-    }
-  });
-  return toc;
+	const toc: Heading[] = [];
+	const parentHeadings = new Map();
+	for (const h of headings) {
+		const heading = { ...h, subheadings: [] };
+		parentHeadings.set(heading.depth, heading);
+		if (heading.depth === 2) {
+			toc.push(heading);
+		} else {
+			parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+		}
+	}
+	return toc;
 }
 ---
 
