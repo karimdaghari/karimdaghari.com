@@ -14,10 +14,4 @@ export default defineConfig({
 			theme: "css-variables",
 		},
 	},
-	redirects: {
-		"/x": "https://bsky.app/profile/karimdaghari.com",
-		"/bsky": "https://bsky.app/profile/karimdaghari.com",
-		"/linkedin": "https://www.linkedin.com/in/karimdaghari",
-		"/github": "https://www.github.com/karimdaghari",
-	},
 });

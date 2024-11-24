@@ -23,7 +23,8 @@
 				"useConst": "off",
 				"useImportType": "off"
 			}
-		}
+		},
+		"ignore": ["public/pagefind"]
 	},
 	"javascript": {
 		"formatter": {
