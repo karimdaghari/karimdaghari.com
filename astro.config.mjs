@@ -1,4 +1,4 @@
-import tailwind from "@astrojs/tailwind";
+import tailwind from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 import mdx from "@astrojs/mdx";
@@ -8,7 +8,10 @@ import pagefind from "astro-pagefind";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://karimdaghari.com",
-	integrations: [tailwind(), sitemap(), mdx(), pagefind()],
+	vite: {
+		plugins: [tailwind()],
+	},
+	integrations: [sitemap(), mdx(), pagefind()],
 	markdown: {
 		shikiConfig: {
 			theme: "css-variables",
